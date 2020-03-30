@@ -34,7 +34,6 @@ import com.google.ar.core.Pose;
 import com.google.ar.sceneform.AnchorNode;
 import com.google.ar.sceneform.Node;
 import com.google.ar.sceneform.rendering.ModelRenderable;
-import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
 
 /**
@@ -44,7 +43,7 @@ public class HelloSceneformActivity extends AppCompatActivity {
     private static final String TAG = HelloSceneformActivity.class.getSimpleName();
     private static final double MIN_OPENGL_VERSION = 3.0;
 
-    private ArFragment arFragment;
+    private Arfragment arFragment;
     private ModelRenderable andyRenderable;
     private ModelRenderable andyRenderable1;
     private Pose pose1;
@@ -61,6 +60,7 @@ public class HelloSceneformActivity extends AppCompatActivity {
     @SuppressWarnings({"AndroidApiChecker", "FutureReturnValueIgnored"})
     // CompletableFuture requires api level 24
     // FutureReturnValueIgnored is not valid
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Toast.makeText(this, "test3", Toast.LENGTH_LONG)
@@ -72,7 +72,8 @@ public class HelloSceneformActivity extends AppCompatActivity {
 
 
         setContentView(R.layout.activity_ux);
-        arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ux_fragment);
+        arFragment = (Arfragment) getSupportFragmentManager().findFragmentById(R.id.ux_fragment);
+
 
         // When you build a Renderable, Sceneform loads its resources in the background while returning
         // a CompletableFuture. Call thenAccept(), handle(), or check isDone() before calling get().
@@ -113,8 +114,6 @@ public class HelloSceneformActivity extends AppCompatActivity {
                     }
 
                     Log.e("TEST", "metres");
-
-
 
                     switch (tapnb) {
                         case 1:
@@ -174,6 +173,7 @@ public class HelloSceneformActivity extends AppCompatActivity {
 
     }
 
+
     private void calculedistance() {
         TextView txtv = findViewById(R.id.textView);
         if (pose1 != null && pose2 != null) {
@@ -182,10 +182,10 @@ public class HelloSceneformActivity extends AppCompatActivity {
             float dz = pose1.tz() - pose2.tz();
 
             float distanceMeters = (float) Math.sqrt(dx*dx + dy*dy + dz*dz);
-            Toast dist =
+            /*Toast dist =
                     Toast.makeText(this, distanceMeters + "metres", Toast.LENGTH_LONG);
             dist.setGravity(Gravity.CENTER, 0, 0);
-            dist.show();
+            dist.show();*/
             txtv.setText(String.valueOf(distanceMeters)+"   "+tapnb);
             Log.e("DISTANCE", distanceMeters+"metres");
         }

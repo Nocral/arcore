@@ -26,9 +26,8 @@
       android:layout_height="wrap_content"
       android:text="@string/textview" />
 
-  <fragment
+  <fragment android:name="com.google.ar.sceneform.samples.hellosceneform.Arfragment"
       android:id="@+id/ux_fragment"
-      android:name="com.google.ar.sceneform.ux.ArFragment"
       android:layout_width="match_parent"
       android:layout_height="match_parent" />
 
